@@ -2,15 +2,16 @@ package cc.factorie
 
 import scala.language.experimental.macros
 import scala.reflect.macros.Context
+import cc.factorie.la.Tensor
 
 
 package object la_macros {
 
-  def fastTensorForeach(tensor: AnyRef, f: (Int, Double) => Unit): Unit = macro impl
+  def fastTensorForeach(tensor: Tensor, f: (Int, Double) => Unit): Unit = macro impl
 
 
   def impl(c: Context)
-          (tensor: c.Expr[AnyRef], f: c.Expr[(Int, Double) => Unit] ): c.Expr[Unit] = {
+          (tensor: c.Expr[Tensor], f: c.Expr[(Int, Double) => Unit] ): c.Expr[Unit] = {
     import c.universe._
     import definitions._
     import Flag._
