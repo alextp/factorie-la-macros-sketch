@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>cc.fatorie</groupId>
-    <artifactId>la-macros</artifactId>
+    <groupId>cc.facmacros</groupId>
+    <artifactId>la_macros</artifactId>
     <packaging>jar</packaging>
     <description>Macros for fast tensor foreach in factorie</description>
     <version>1.0-SNAPSHOT</version>
@@ -98,6 +98,16 @@
         <artifactId>scala-library</artifactId>
         <version>${scala.version}</version>
       </dependency>
+      <dependency>
+        <groupId>cc.factorie</groupId>
+        <artifactId>factorie</artifactId>
+        <version>1.0-SNAPSHOT</version>
+      </dependency>
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-reflect</artifactId>
+        <version>${scala.version}</version>
+      </dependency>
     </dependencies>
     <distributionManagement>
       <repository>
@@ -119,24 +129,5 @@
         <url>scp://iesl.cs.umass.edu/m/iesl/data2/www/iesl/maven/factorie</url>
       </site>
     </distributionManagement>
-    <repositories>
-      <repository>
-        <id>IESLsnapshots</id>
-        <name>IESL snapshots</name>
-        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/snapshots/</url>
-        <layout>default</layout>
-      </repository>
-      <repository>
-        <id>IESLreleases</id>
-        <name>IESL releases</name>
-        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/releases/</url>
-        <layout>default</layout>
-      </repository>
-      <repository>
-        <id>scala-tools.org</id>
-        <name>Scala-Tools Maven2 Repository</name>
-        <url>https://oss.sonatype.org/content/groups/scala-tools</url>
-      </repository>
-    </repositories>
   </project>
   
