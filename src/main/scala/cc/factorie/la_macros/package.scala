@@ -6,7 +6,7 @@ import cc.factorie.la.Tensor
 
 
 package object la_macros {
-
+  import cc.factorie.la._
   def fastTensorForeach(tensor: Tensor, f: (Int, Double) => Unit): Unit = macro impl
 
 
@@ -107,7 +107,11 @@ package object la_macros {
     *   }
     * with the above cases in place of ...
     * */
-    c.Expr(Match(tensor.tree, List(de, se)))
+    val m = c.Expr(Match(tensor.tree, List(de, se)))
+    reify {
+      import cc.factorie.la._
+      m.splice
+    }
   }
 }
 
