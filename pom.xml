@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cc.fatorie</groupId>
+    <artifactId>la-macros</artifactId>
+    <packaging>jar</packaging>
+    <description>Macros for fast tensor foreach in factorie</description>
+    <version>1.0-SNAPSHOT</version>
+    <name>la-macros</name>
+    <licenses>
+      <license>
+        <name>Apache 2</name>
+        <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        <distribution>repo</distribution>
+        <comments>A business-friendly OSS license</comments>
+      </license>
+    </licenses>
+    
+    <organization>
+      <name>University of Massachusetts, Amherst</name>
+      <url>http://cs.umass.edu</url>
+    </organization>
+    
+    <repositories>
+      <repository>
+        <id>scala-tools.org</id>
+        <name>Scala-Tools Maven2 Repository</name>
+        <url>https://oss.sonatype.org/content/groups/scala-tools</url>
+      </repository>
+      <repository>
+        <id>dev-iesl.cs.umass.edu</id>
+        <name>dev-iesl.cs.umass.edu</name>
+        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/thirdparty/</url>
+      </repository>
+    </repositories>
+    
+    <properties>
+      <scala.version>2.10.1</scala.version>
+      <scalatest.version>1.9.1</scalatest.version>
+      <junit.version>4.10</junit.version>
+    </properties>
+    
+    
+    <pluginRepositories>
+      <pluginRepository>
+        <id>scala-tools.org</id>
+        <name>Scala-Tools Maven2 Repository</name>
+        <url>https://oss.sonatype.org/content/groups/scala-tools</url>
+      </pluginRepository>
+    </pluginRepositories>
+    <build>
+      <sourceDirectory>src/main/scala</sourceDirectory>
+      <testSourceDirectory>src/test/scala</testSourceDirectory>
+      <plugins>
+        <!-- Adds support for building Scala -->
+        <plugin>
+          <groupId>org.scala-tools</groupId>
+          <artifactId>maven-scala-plugin</artifactId>
+          <version>2.15.2</version>
+          <executions>
+            <execution>
+              <goals>
+                <goal>compile</goal>
+                <goal>testCompile</goal>
+              </goals>
+            </execution>
+          </executions>
+          <configuration>
+            <recompileMode>incremental</recompileMode>
+            <scalaVersion>${scala.version}</scalaVersion>
+            
+            <args>
+              <arg>-deprecation</arg>
+              <arg>-feature</arg>
+            </args>
+            <launchers>
+            </launchers>
+          </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-release-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <!-- During release:perform, enable the "release" profile -->
+          <releaseProfiles>release</releaseProfiles>
+          <goals>deploy package</goals>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+    <dependencies>  
+      <dependency>
+        <groupId>org.scala-lang</groupId>
+        <artifactId>scala-library</artifactId>
+        <version>${scala.version}</version>
+      </dependency>
+    </dependencies>
+    <distributionManagement>
+      <repository>
+        <id>dev-iesl.cs.umass.edu</id>
+        <name>dev-iesl.cs.umass.edu</name>
+        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/releases</url>
+      </repository>
+
+      <snapshotRepository>
+        <id>dev-iesl.cs.umass.edu</id>
+        <name>dev-iesl.cs.umass.edu</name>
+        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/snapshots</url>
+        <uniqueVersion>true</uniqueVersion>
+      </snapshotRepository>
+      
+      <site>
+        <id>ieslwww</id>
+        <name>IESL www repository</name>
+        <url>scp://iesl.cs.umass.edu/m/iesl/data2/www/iesl/maven/factorie</url>
+      </site>
+    </distributionManagement>
+    <repositories>
+      <repository>
+        <id>IESLsnapshots</id>
+        <name>IESL snapshots</name>
+        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/snapshots/</url>
+        <layout>default</layout>
+      </repository>
+      <repository>
+        <id>IESLreleases</id>
+        <name>IESL releases</name>
+        <url>https://dev-iesl.cs.umass.edu/nexus/content/repositories/releases/</url>
+        <layout>default</layout>
+      </repository>
+      <repository>
+        <id>scala-tools.org</id>
+        <name>Scala-Tools Maven2 Repository</name>
+        <url>https://oss.sonatype.org/content/groups/scala-tools</url>
+      </repository>
+    </repositories>
+  </project>
+  
